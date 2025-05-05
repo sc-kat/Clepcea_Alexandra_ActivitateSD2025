@@ -1,0 +1,12 @@
+# Ignore Visual Studio and build files
+.vs/
+*.exe
+*.obj
+*.pdb
+*.user
+*.suo
+*.VC.db
+*.cache
+Debug/
+Release/
+x64/
