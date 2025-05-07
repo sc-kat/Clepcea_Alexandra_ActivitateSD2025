@@ -36,8 +36,17 @@ void afiseazaCarte(struct Carte c) {
 	printf("Numar editii: %d\n", c.nrEditii);
 }
 
+void modificaTitlu(struct Carte* c, const char* titluNou) {
+	free(c->titlu);
+	c->titlu = (char*)malloc(strlen(titluNou) + 1);
+	strcpy_s(c->titlu, strlen(titluNou) + 1, titluNou);
+}
+
 int main() {
 	struct Carte carte = citesteCarte();
+	afiseazaCarte(carte);
+
+	modificaTitlu(&carte, "Ion");
 
 	afiseazaCarte(carte);
 
