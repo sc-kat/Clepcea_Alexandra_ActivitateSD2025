@@ -1,6 +1,8 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<malloc.h>
+#include <string.h>
+
 
 struct Carte {
 	int id;
@@ -36,6 +38,15 @@ void afiseazaCarte(struct Carte c) {
 	printf("Numar editii: %d\n", c.nrEditii);
 }
 
+char* verificaPopularitatea(struct Carte c) {
+	if (c.nrEditii >= 3) {
+		return "Cartea are mai mult de 3 editii si este considerata populara.";
+	}
+	else {
+		return "Cartea are mai putin de 3 editii si nu este considerata populara.";
+	}
+}
+
 void modificaTitlu(struct Carte* c, const char* titluNou) {
 	free(c->titlu);
 	c->titlu = (char*)malloc(strlen(titluNou) + 1);
@@ -49,6 +60,8 @@ int main() {
 	modificaTitlu(&carte, "Ion");
 
 	afiseazaCarte(carte);
+
+	printf("\n%s\n",verificaPopularitatea(carte));
 
 	return 0;
 }
