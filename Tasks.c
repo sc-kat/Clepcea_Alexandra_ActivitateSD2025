@@ -10,6 +10,15 @@ struct Carte {
 	int nrEditii;
 };
 
+struct Carte initializare(int id, char* titlu, int nrEditii) {
+	struct Carte c;
+	c.id = id;
+	c.titlu = malloc((strlen(titlu) + 1) * sizeof(char));
+	strcpy_s(c.titlu, strlen(titlu) + 1, titlu);
+	c.nrEditii = nrEditii;
+	return c;
+}
+
 struct Carte citesteCarte() {
 	struct Carte c;
 	char buffer[100];
@@ -47,6 +56,10 @@ char* verificaPopularitatea(struct Carte c) {
 	}
 }
 
+struct Carte filtreazaPopulare() {
+
+}
+
 void modificaTitlu(struct Carte* c, const char* titluNou) {
 	free(c->titlu);
 	c->titlu = (char*)malloc(strlen(titluNou) + 1);
@@ -54,14 +67,29 @@ void modificaTitlu(struct Carte* c, const char* titluNou) {
 }
 
 int main() {
-	struct Carte carte = citesteCarte();
-	afiseazaCarte(carte);
+	//struct Carte carte = citesteCarte();
+	//afiseazaCarte(carte);
 
-	modificaTitlu(&carte, "Ion");
+	//modificaTitlu(&carte, "Ion");
 
-	afiseazaCarte(carte);
+	//afiseazaCarte(carte);
 
-	printf("\n%s\n",verificaPopularitatea(carte));
+	//printf("\n%s\n",verificaPopularitatea(carte));
+
+	int dim = 5;
+	struct Carte* carti = (struct Carte*)malloc(dim * sizeof(struct Carte));
+
+	if (carti) {
+		carti[0] = initializare(1, "Sapho", 3);
+		carti[1] = initializare(2, "La Medeleni", 1);
+		carti[2] = initializare(3, "Mara", 2);
+		carti[3] = initializare(4, "Invitatie la vals", 11);
+		carti[4] = initializare(5, "1Q84", 10);
+	}
+
+	
+	int dimPopulare = 0;
+
 
 	return 0;
 }
