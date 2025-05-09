@@ -41,7 +41,6 @@ struct Carte citesteCarte() {
 }
 
 void afiseazaCarte(struct Carte c) {
-	printf("\n--- Informatii Carte ---\n");
 	printf("ID: %d\n", c.id);
 	printf("Titlu: %s\n", c.titlu);
 	printf("Numar editii: %d\n", c.nrEditii);
@@ -68,6 +67,34 @@ struct Carte* filtreazaPopulare(struct Carte* vector, int dim, int* dimRezultat)
 		}
 	}
 	return rezultat;
+}
+
+struct Carte* filtreazaTitluLung(struct Carte* vector, int dim, int* dimRezultat) {
+	*dimRezultat = 0;
+	struct Carte* rezultat = (struct Carte*)malloc(dim * sizeof(struct Carte));
+
+	for (int i = 0; i < dim; i++) {
+		if (strlen(vector[i].titlu) > 10) {
+			rezultat[*dimRezultat] = vector[i];
+			(*dimRezultat)++;
+		}
+	}
+	return rezultat;
+}
+
+struct Carte* concateneazaVectori(struct Carte* v1, struct Carte* v2, int dim1, int dim2, int* dimRezultat) {
+
+	*dimRezultat = dim1 + dim2;
+	struct Carte* rezultatConcatenare = (struct Carte*)malloc((*dimRezultat) * sizeof(struct Carte));
+
+	for (int i = 0; i < dim1; i++) {
+		rezultatConcatenare[i] = v1[i];
+	}
+	for (int i = 0; i < dim2; i++) {
+		rezultatConcatenare[dim1 + i] = v2[i];
+	}
+
+	return rezultatConcatenare;
 }
 
 void afiseazaVector(struct Carte* vector, int dim) {
@@ -110,6 +137,18 @@ int main() {
 	printf("\n=== Carti populare (nrEditii >= 3) ===\n");
 	afiseazaVector(populare, dimPopulare);
 
+	int dimTitluLung = 0;
+	struct Carte* titluLung = filtreazaTitluLung(carti, dim, &dimTitluLung);
+
+	printf("\n=== Carti cu titlu mai lung de 10 caractere ===\n");
+	afiseazaVector(titluLung, dimTitluLung);
+
+
+	int dimConcatenare = 0;
+	struct Carte* concatenare = concateneazaVectori(populare, titluLung, dimPopulare, dimTitluLung, &dimConcatenare);
+
+	printf("\n=== Vector concatenat (populare + titlu lung) ===\n");
+	afiseazaVector(concatenare, dimConcatenare);
 
 	return 0;
 }
