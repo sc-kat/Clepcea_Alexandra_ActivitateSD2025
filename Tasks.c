@@ -56,8 +56,24 @@ char* verificaPopularitatea(struct Carte c) {
 	}
 }
 
-struct Carte filtreazaPopulare() {
+struct Carte* filtreazaPopulare(struct Carte* vector, int dim, int* dimRezultat) {
 
+	*dimRezultat = 0;
+	struct Carte* rezultat = (struct Carte*)malloc(dim * sizeof(struct Carte));
+
+	for (int i = 0; i < dim; i++) {
+		if (vector[i].nrEditii >= 3) {
+			rezultat[*dimRezultat] = vector[i];
+			(*dimRezultat)++;
+		}
+	}
+	return rezultat;
+}
+
+void afiseazaVector(struct Carte* vector, int dim) {
+	for (int i = 0; i < dim; i++) {
+		afiseazaCarte(vector[i]);
+	}
 }
 
 void modificaTitlu(struct Carte* c, const char* titluNou) {
@@ -89,6 +105,10 @@ int main() {
 
 	
 	int dimPopulare = 0;
+	struct Carte* populare = filtreazaPopulare(carti, dim, &dimPopulare);
+	
+	printf("\n=== Carti populare (nrEditii >= 3) ===\n");
+	afiseazaVector(populare, dimPopulare);
 
 
 	return 0;
