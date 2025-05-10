@@ -1,6 +1,7 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 #include<malloc.h>
+#include <stdlib.h>
 #include <string.h>
 
 
@@ -13,7 +14,7 @@ struct Carte {
 struct Carte initializare(int id, char* titlu, int nrEditii) {
 	struct Carte c;
 	c.id = id;
-	c.titlu = malloc((strlen(titlu) + 1) * sizeof(char));
+	c.titlu = (char*)malloc((strlen(titlu) + 1) * sizeof(char));
 	strcpy_s(c.titlu, strlen(titlu) + 1, titlu);
 	c.nrEditii = nrEditii;
 	return c;
