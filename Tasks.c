@@ -112,6 +112,21 @@ void modificaTitlu(struct Carte* c, const char* titluNou) {
 	strcpy_s(c->titlu, strlen(titluNou) + 1, titluNou);
 }
 
+struct Carte citesteCarteDinFisier(FILE* f) {
+	struct Carte c;
+	char buffer[100];
+	char sep[3] = ",\n";
+	fgets(buffer, 100, f);
+	int id = atoi(strtok(buffer, sep));
+	c.id = id;
+	char* aux = strtok(NULL, sep);
+	c.titlu = (char*)malloc(strlen(aux) + 1);
+	strcpy_s(c.titlu, strlen(aux) + 1, aux);
+	c.nrEditii = atoi(strtok(NULL, sep));
+
+	return c;
+}
+
 int main() {
 	//struct Carte carte = citesteCarte();
 	//afiseazaCarte(carte);
@@ -122,36 +137,40 @@ int main() {
 
 	//printf("\n%s\n",verificaPopularitatea(carte));
 
-	int dim = 5;
-	struct Carte* carti = (struct Carte*)malloc(dim * sizeof(struct Carte));
+	/*int dim = 5;
+	struct Carte* carti = (struct Carte*)malloc(dim * sizeof(struct Carte));*/
 
-	if (carti) {
-		carti[0] = initializare(1, "Sapho", 3);
-		carti[1] = initializare(2, "La Medeleni", 1);
-		carti[2] = initializare(3, "Mara", 2);
-		carti[3] = initializare(4, "Invitatie la vals", 11);
-		carti[4] = initializare(5, "1Q84", 10);
-	}
+	//if (carti) {
+	//	carti[0] = initializare(1, "Sapho", 3);
+	//	carti[1] = initializare(2, "La Medeleni", 1);
+	//	carti[2] = initializare(3, "Mara", 2);
+	//	carti[3] = initializare(4, "Invitatie la vals", 11);
+	//	carti[4] = initializare(5, "1Q84", 10);
+	//}
 
-	
-	int dimPopulare = 0;
-	struct Carte* populare = filtreazaPopulare(carti, dim, &dimPopulare);
-	
-	printf("\n=== Carti populare (nrEditii >= 3) ===\n");
-	afiseazaVector(populare, dimPopulare);
+	//
+	//int dimPopulare = 0;
+	//struct Carte* populare = filtreazaPopulare(carti, dim, &dimPopulare);
+	//
+	//printf("\n=== Carti populare (nrEditii >= 3) ===\n");
+	//afiseazaVector(populare, dimPopulare);
 
-	int dimTitluLung = 0;
-	struct Carte* titluLung = filtreazaTitluLung(carti, dim, &dimTitluLung);
+	//int dimTitluLung = 0;
+	//struct Carte* titluLung = filtreazaTitluLung(carti, dim, &dimTitluLung);
 
-	printf("\n=== Carti cu titlu mai lung de 10 caractere ===\n");
-	afiseazaVector(titluLung, dimTitluLung);
+	//printf("\n=== Carti cu titlu mai lung de 10 caractere ===\n");
+	//afiseazaVector(titluLung, dimTitluLung);
 
 
-	int dimConcatenare = 0;
-	struct Carte* concatenare = concateneazaVectori(populare, titluLung, dimPopulare, dimTitluLung, &dimConcatenare);
+	//int dimConcatenare = 0;
+	//struct Carte* concatenare = concateneazaVectori(populare, titluLung, dimPopulare, dimTitluLung, &dimConcatenare);
 
-	printf("\n=== Vector concatenat (populare + titlu lung) ===\n");
-	afiseazaVector(concatenare, dimConcatenare);
+	//printf("\n=== Vector concatenat (populare + titlu lung) ===\n");
+	//afiseazaVector(concatenare, dimConcatenare);
+
+	FILE* f = fopen("carti.txt", "r");
+	struct Carte c = citesteCarteDinFisier(f);
+	afiseazaCarte(c);
 
 	return 0;
 }
