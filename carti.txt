@@ -1,0 +1,10 @@
+1,Mara,3
+2,Baltagul,4
+3,Enigma Otiliei,5
+4,Ion,2
+5,La Medeleni,6
+6,Morometii,7
+7,Ciuleandra,3
+8,Amintiri din copilarie,4
+9,O scrisoare pierduta,2
+10,Iona,5

@@ -5,6 +5,7 @@
 #include <string.h>
 
 
+
 struct Carte {
 	int id;
 	char* titlu;
@@ -31,7 +32,8 @@ struct Carte citesteCarte() {
 	printf("Introdu titlul cartii: ");
 	fgets(buffer, sizeof(buffer), stdin);
 	buffer[strcspn(buffer, "\n")] = 0;
-
+	fgets(buffer, sizeof(buffer), stdin)
+		;
 	c.titlu = (char*)malloc(strlen(buffer) + 1);
 	strcpy(c.titlu, buffer);
 

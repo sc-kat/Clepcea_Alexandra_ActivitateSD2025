@@ -129,6 +129,9 @@
   <ItemGroup>
     <ClCompile Include="Tasks.c" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="carti.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
