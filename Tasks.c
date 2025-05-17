@@ -145,7 +145,6 @@ struct Carte* citireVectorDinFisier(const char* numeFisier, int* dim) {
 	FILE* f = fopen(numeFisier, "r");
 	struct Client* vector = NULL;
 	(*dim) = 0;
-	struct Carte* vector = NULL;
 
 	while (!feof(f)) {
 		struct Carte c = citesteCarteDinFisier(f);
@@ -153,6 +152,16 @@ struct Carte* citireVectorDinFisier(const char* numeFisier, int* dim) {
 	}
 	fclose(f);
 	return vector;
+}
+
+void dezalocareVectorCarti(struct Carte** vector, int* dim) {
+	for (int i = 0; i < *dim; i++) {
+		free((*vector)[i].titlu);
+	}
+
+	free(*vector);
+	*vector = NULL;
+	*dim = 0;
 }
 
 int main() {
@@ -196,9 +205,16 @@ int main() {
 	//printf("\n=== Vector concatenat (populare + titlu lung) ===\n");
 	//afiseazaVector(concatenare, dimConcatenare);
 
-	FILE* f = fopen("carti.txt", "r");
-	struct Carte c = citesteCarteDinFisier(f);
-	afiseazaCarte(c);
+	//FILE* f = fopen("carti.txt", "r");
+	//struct Carte c = citesteCarteDinFisier(f);
+	//afiseazaCarte(c);
+
+	struct Carte* carti = NULL;
+	int nrCarti = 0;
+	carti = citireVectorDinFisier("carti.txt", &nrCarti);
+	afiseazaVector(carti, nrCarti);
+
+	dezalocareVectorCarti(&carti, &nrCarti);
 
 	return 0;
 }
