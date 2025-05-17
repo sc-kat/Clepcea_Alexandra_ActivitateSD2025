@@ -144,7 +144,15 @@ void inserareCarteVector(struct Carte** vector, int* dim, struct Carte carte) {
 struct Carte* citireVectorDinFisier(const char* numeFisier, int* dim) {
 	FILE* f = fopen(numeFisier, "r");
 	struct Client* vector = NULL;
-	(*dim) = 0
+	(*dim) = 0;
+	struct Carte* vector = NULL;
+
+	while (!feof(f)) {
+		struct Carte c = citesteCarteDinFisier(f);
+		inserareCarteVector(&vector, dim, c);
+	}
+	fclose(f);
+	return vector;
 }
 
 int main() {
