@@ -32,8 +32,7 @@ struct Carte citesteCarte() {
 	printf("Introdu titlul cartii: ");
 	fgets(buffer, sizeof(buffer), stdin);
 	buffer[strcspn(buffer, "\n")] = 0;
-	fgets(buffer, sizeof(buffer), stdin)
-		;
+	
 	c.titlu = (char*)malloc(strlen(buffer) + 1);
 	strcpy(c.titlu, buffer);
 
@@ -124,7 +123,7 @@ struct Carte citesteCarteDinFisier(FILE* f) {
 	strcpy_s(c.titlu, strlen(aux) + 1, aux);
 	c.nrEditii = atoi(strtok(NULL, sep));
 
-	return c;
+	return c;citesteCarte
 }
 
 void inserareCarteVector(struct Carte** vector, int* dim, struct Carte carte) {
@@ -143,7 +142,7 @@ void inserareCarteVector(struct Carte** vector, int* dim, struct Carte carte) {
 
 struct Carte* citireVectorDinFisier(const char* numeFisier, int* dim) {
 	FILE* f = fopen(numeFisier, "r");
-	struct Client* vector = NULL;
+	struct Carte* vector = NULL;
 	(*dim) = 0;
 
 	while (!feof(f)) {
