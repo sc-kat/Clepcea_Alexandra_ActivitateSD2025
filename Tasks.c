@@ -116,15 +116,35 @@ struct Carte citesteCarteDinFisier(FILE* f) {
 	struct Carte c;
 	char buffer[100];
 	char sep[3] = ",\n";
-	fgets(buffer, 100, f);
-	int id = atoi(strtok(buffer, sep));
-	c.id = id;
+
+	fgets(buffer, sizeof(buffer), f);
+	c.id = atoi(strtok(buffer, sep));;
 	char* aux = strtok(NULL, sep);
 	c.titlu = (char*)malloc(strlen(aux) + 1);
 	strcpy_s(c.titlu, strlen(aux) + 1, aux);
 	c.nrEditii = atoi(strtok(NULL, sep));
 
 	return c;
+}
+
+void inserareCarteVector(struct Carte** vector, int* dim, struct Carte carte) {
+	struct Carte* aux = (struct Carte*)malloc(sizeof(struct Carte) * (*dim + 1));
+	for (int i = 0; i < *dim; i++) {
+		aux[i] = (*vector)[i];
+	}
+	aux[*dim] = carte;
+	aux[*dim].titlu = (char*)malloc(strlen(carte.titlu) + 1);
+	strcpy_s(aux[*dim].titlu, strlen(carte.titlu) + 1, carte.titlu);
+
+	free(*vector);
+	*vector = aux;
+	(*dim)++;
+}
+
+struct Carte* citireVectorDinFisier(const char* numeFisier, int* dim) {
+	FILE* f = fopen(numeFisier, "r");
+	struct Client* vector = NULL;
+	(*dim) = 0
 }
 
 int main() {
