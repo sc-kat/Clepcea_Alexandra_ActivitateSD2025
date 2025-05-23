@@ -86,6 +86,17 @@ Nod* citireListaCartiDinFisier(const char* numeFisier) {
 	return cap;
 }
 
+void dezalocareListaCarti(Nod** cap) {
+	while (*cap) {
+		Nod* p = *cap;
+		(*cap) = (*cap)->next;
+		if (p->info.titlu) {
+			free(p->info.titlu);
+		}
+		free(p);
+	}
+}
+
 //struct Carte initializare(int id, char* titlu, int nrEditii) {
 //	struct Carte c;
 //	c.id = id;
@@ -231,6 +242,7 @@ int main() {
 
 	//printf("\n%s\n",verificaPopularitatea(carte));
 
+
 	/*int dim = 5;
 	struct Carte* carti = (struct Carte*)malloc(dim * sizeof(struct Carte));*/
 
@@ -276,6 +288,8 @@ int main() {
 	Nod* cap = citireListaCartiDinFisier("carti.txt");
 	afisareListaCarti(cap);
 	
+	dezalocareListaCarti(&cap);
+
 
 	return 0;
 }
