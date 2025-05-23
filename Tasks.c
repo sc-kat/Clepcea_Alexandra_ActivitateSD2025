@@ -232,7 +232,7 @@ void dezalocareListaCarti(Nod** cap) {
 //	*dim = 0;
 //}
 
-int main() {
+/*int main()*/ {
 	//struct Carte carte = citesteCarte();
 	//afiseazaCarte(carte);
 
@@ -285,11 +285,11 @@ int main() {
 
 	dezalocareVectorCarti(&carti, &nrCarti);*/
 
-	Nod* cap = citireListaCartiDinFisier("carti.txt");
-	afisareListaCarti(cap);
-	
-	dezalocareListaCarti(&cap);
-
-
-	return 0;
-}
+//	Nod* cap = citireListaCartiDinFisier("carti.txt");
+//	afisareListaCarti(cap);
+//	
+//	dezalocareListaCarti(&cap);
+//
+//
+//	return 0;
+//}

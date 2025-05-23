@@ -18,6 +18,9 @@
     <ClCompile Include="Tasks.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ListeDubluInlantuite.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="carti.txt">
