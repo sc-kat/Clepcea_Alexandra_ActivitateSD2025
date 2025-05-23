@@ -73,7 +73,7 @@ void adaugaCarteInLista(ListaDubla* lista, Carte carteNoua) {
 		lista->first = nou;
 	}
 	lista->last = nou;
-	(lista->nrNoduri)++;
+	lista->nrNoduri++;
 
 }
 
@@ -92,12 +92,28 @@ void adaugaCarteLaInceputInLista(ListaDubla* lista, Carte carteNoua) {
 	(lista->nrNoduri)++;
 }
 
+ListaDubla citireLDCarteDinFisier(const char* numeFisier) {
+	FILE* f = fopen(numeFisier, "r");
+	ListaDubla lista;
+	lista.first = NULL;
+	lista.last = NULL;
+	lista.nrNoduri = 0;
 
-void* citireLDCarteDinFisier() {
-
+	while (!feof(f)) {
+		adaugaCarteInLista(&lista, citesteCarteDinFisier(f));
+	}
+	fclose(f);
+	return lista;
 }
 
+int main() {
+	ListaDubla lista = citireLDCarteDinFisier("carti.txt");
+	afisareListaCartiAsc(lista);
+	printf("-------------------------------\n");
 
+	afisareListaCartiDesc(lista);
+
+}
 
 
 
