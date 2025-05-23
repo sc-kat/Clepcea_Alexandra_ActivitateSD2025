@@ -111,6 +111,15 @@ void afiseazaHeapAscuns(Heap heap) {
 	}
 }
 
+void dezalocareHeap(Heap* heap) {
+	for (int i = 0; i < heap->lungime; i++) {
+		free(heap->vector[i].titlu);
+	}
+	free(heap->vector);
+	heap->vector = NULL;
+	heap->nrCarti = 0;
+	heap->lungime = 0;
+}
 
 int main() {
 
@@ -134,7 +143,7 @@ int main() {
 	printf("\n\n\n\nAfiseaza carti ascunse:\n");
 	afiseazaHeapAscuns(heap);
 
-
+	dezalocareHeap(&heap);
 
 	return 0;
 }
