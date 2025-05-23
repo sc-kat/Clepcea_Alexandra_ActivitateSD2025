@@ -121,7 +121,7 @@ int main() {
 	Heap heap = citireHeapDeCartiDinFisier("carti_arbore.txt");
 	//afisareHeapElemVizibile(heap);
 
-	printf("Masini extrase:\n");
+	printf("Carti extrase:\n");
 	afiseazaCarte(extrageCarte(&heap));
 	afiseazaCarte(extrageCarte(&heap));
 	afiseazaCarte(extrageCarte(&heap));
@@ -131,6 +131,10 @@ int main() {
 	afiseazaCarte(extrageCarte(&heap));
 	afiseazaCarte(extrageCarte(&heap));
 	
+	printf("\n\n\n\nAfiseaza carti ascunse:\n");
+	afiseazaHeapAscuns(heap);
+
+
 
 	return 0;
 }
