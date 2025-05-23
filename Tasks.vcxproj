@@ -127,11 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Heap.c" />
     <ClCompile Include="ListeDubluInlantuite.c" />
     <ClCompile Include="Tasks.c" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="carti.txt" />
+    <Text Include="carti_arbore.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

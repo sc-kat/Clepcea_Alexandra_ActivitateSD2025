@@ -21,10 +21,14 @@
     <ClCompile Include="ListeDubluInlantuite.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Heap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="carti.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="carti_arbore.txt" />
   </ItemGroup>
 </Project>
