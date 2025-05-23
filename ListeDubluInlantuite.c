@@ -106,14 +106,32 @@ ListaDubla citireLDCarteDinFisier(const char* numeFisier) {
 	return lista;
 }
 
+void dezalocareLDCarti(ListaDubla* lista) {
+	Nod* p = lista->first;
+	while (p) {
+		Nod* aux = p;
+		p = p->next;
+		if (aux->carte.nrEditii) {
+			free(aux->carte.nrEditii);
+		}
+		free(aux);
+	}
+	
+	lista->first = NULL;
+	lista->last = NULL;
+	lista->nrNoduri = 0;
+}
+
+
 int main() {
 	ListaDubla lista = citireLDCarteDinFisier("carti.txt");
 	afisareListaCartiAsc(lista);
 	printf("-------------------------------\n");
-
 	afisareListaCartiDesc(lista);
 
-}
+	dezalocareLDCarti(&lista);
 
+	return 0;
+}
 
 
