@@ -133,6 +133,7 @@
     <ClCompile Include="Tasks.c" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="avioane.txt" />
     <Text Include="carti.txt" />
     <Text Include="carti_arbore.txt" />
   </ItemGroup>

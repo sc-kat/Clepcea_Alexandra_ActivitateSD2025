@@ -33,5 +33,6 @@
       <Filter>Source Files</Filter>
     </Text>
     <Text Include="carti_arbore.txt" />
+    <Text Include="avioane.txt" />
   </ItemGroup>
 </Project>
