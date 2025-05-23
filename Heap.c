@@ -86,15 +86,51 @@ Heap citireHeapDeCartiDinFisier(const char* numeFisier) {
 	return heap;
 }
 
+void afisareHeapElemVizibile(Heap heap) {
+	for (int i = 0; i < heap.nrCarti; i++) {
+		afiseazaCarte(heap.vector[i]);
+	}
+}
+
+Carte extrageCarte(Heap* heap) {
+	if (heap->nrCarti > 0) {
+		Carte aux = heap->vector[0];
+		heap->vector[0] = heap->vector[heap->nrCarti - 1];
+		heap->vector[heap->nrCarti - 1] = aux;
+		heap->nrCarti--;
+		for (int i = (heap->nrCarti - 2) / 2; i >= 0; i--) {
+			filtreazaHeap(*heap, i);
+		}
+		return aux; // shallow copy
+	}
+}
+
+void afiseazaHeapAscuns(Heap heap) {
+	for (int i = heap.nrCarti; i < heap.lungime; i++) {
+		afiseazaCarte(heap.vector[i]);
+	}
+}
 
 
 int main() {
 
-	for (int i = 0; i < 10; i++) {
-		afiseazaCarte(citireHeapDeCartiDinFisier("carti_arbore.txt").vector[i]);
-	}
+	//for (int i = 0; i < 10; i++) {
+	//	afiseazaCarte(citireHeapDeCartiDinFisier("carti_arbore.txt").vector[i]);
+	//}
 
-	//citireHeapDeCartiDinFisier("carti_arbore.txt");
+	Heap heap = citireHeapDeCartiDinFisier("carti_arbore.txt");
+	//afisareHeapElemVizibile(heap);
+
+	printf("Masini extrase:\n");
+	afiseazaCarte(extrageCarte(&heap));
+	afiseazaCarte(extrageCarte(&heap));
+	afiseazaCarte(extrageCarte(&heap));
+	afiseazaCarte(extrageCarte(&heap));
+	afiseazaCarte(extrageCarte(&heap));
+	afiseazaCarte(extrageCarte(&heap));
+	afiseazaCarte(extrageCarte(&heap));
+	afiseazaCarte(extrageCarte(&heap));
+	
 
 	return 0;
 }
