@@ -64,6 +64,19 @@ Avion citesteAvionDinFisier(FILE* f) {
 	return a;
 }
 
+int calculeazaInaltimeArbore(Nod* rad) {
+	if (rad) {
+		int Hs = calculeazaInaltimeArbore(rad->st);
+		int Hd = calculeazaInaltimeArbore(rad->dr);
+		return 1 + (Hs > Hd ? Hs : Hd);
+	}
+	else {
+		return 0;
+	}
+}
+
+
+
 void inserareAvionInArbore(Nod** radacina, Avion aNou) {
 	if (*radacina) {
 		if (aNou.nrLocuri < (*radacina)->info.nrLocuri) {
@@ -111,6 +124,8 @@ void afisareAvioaneInOrdine(Nod* radacina) {
 		afisareAvioaneInOrdine(radacina->dr);
 	}
 }
+
+
 
 int main() {
 
