@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArboriBinari.c" />
     <ClCompile Include="Heap.c" />
     <ClCompile Include="ListeDubluInlantuite.c" />
     <ClCompile Include="Tasks.c" />
